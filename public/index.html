@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -10,8 +11,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Cidade Dorme - Edição Frações</title>
-
+    <title>Cidade Dorme - Edição Matemática</title>
 
     <style>
 
@@ -19,15 +19,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
         }
-
 
         body {
 
-            background-color: #0f172a;
-
-            color: #f8fafc;
+            min-height: 100vh;
 
             display: flex;
 
@@ -35,1656 +32,224 @@
 
             align-items: center;
 
-            min-height: 100vh;
-
             padding: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #1e293b
+                );
+
+            color: white;
 
         }
 
+        .container {
+
+            width: 100%;
+
+            max-width: 500px;
+
+        }
 
         .card {
 
-            background-color: #1e293b;
+            background: #ffffff;
 
-            border-radius: 12px;
-
-            padding: 24px;
-
-            width: 100%;
-
-            max-width: 480px;
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,0.5);
-
-        }
-
-
-        .escondido {
-
-            display: none !important;
-
-        }
-
-
-        h1,
-        h2 {
-
-            text-align: center;
-
-            margin-bottom: 16px;
-
-            color: #f59e0b;
-
-        }
-
-
-        .form-group {
-
-            margin-bottom: 16px;
-
-        }
-
-
-        label {
-
-            display: block;
-
-            margin-bottom: 6px;
-
-            font-size: 14px;
-
-            color: #cbd5e1;
-
-        }
-
-
-        input[type="text"],
-        select {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border-radius: 6px;
-
-            border: 1px solid #334155;
-
-            background-color: #0f172a;
-
-            color: white;
-
-            font-size: 16px;
-
-            outline: none;
-
-        }
-
-
-        .radio-group {
-
-            display: flex;
-
-            gap: 10px;
-
-            margin-bottom: 20px;
-
-        }
-
-
-        .radio-btn {
-
-            flex: 1;
-
-            padding: 12px;
-
-            border: 1px solid #334155;
-
-            background-color: #0f172a;
-
-            color: #cbd5e1;
-
-            border-radius: 6px;
-
-            cursor: pointer;
-
-            text-align: center;
-
-            font-weight: bold;
-
-        }
-
-
-        .radio-btn.ativo {
-
-            background-color: #1e3a8a;
-
-            border-color: #38bdf8;
-
-            color: white;
-
-        }
-
-
-        .btn-principal {
-
-            width: 100%;
-
-            padding: 14px;
-
-            background-color: #38bdf8;
-
-            color: #0f172a;
-
-            font-weight: bold;
-
-            border: none;
-
-            border-radius: 6px;
-
-            font-size: 16px;
-
-            cursor: pointer;
-
-        }
-
-
-        .btn-principal:hover {
-
-            background-color: #7dd3fc;
-
-        }
-
-
-        .btn-principal:disabled {
-
-            opacity: 0.5;
-
-            cursor: not-allowed;
-
-        }
-
-
-        .papel-badge {
-
-            background-color: #334155;
-
-            padding: 8px 12px;
+            color: #1e293b;
 
             border-radius: 20px;
 
-            font-size: 13px;
+            padding: 35px 25px;
 
-            font-weight: bold;
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.35);
 
             text-align: center;
 
-            margin-bottom: 16px;
+        }
 
-            color: #38bdf8;
+        h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 8px;
 
         }
 
+        h2 {
 
-        .questao {
+            font-size: 18px;
 
-            background-color: #0f172a;
+            color: #64748b;
 
-            padding: 20px;
+            margin-bottom: 35px;
 
-            border-radius: 10px;
+            font-weight: normal;
+
+        }
+
+        .pergunta {
+
+            font-size: 20px;
+
+            font-weight: bold;
 
             margin-bottom: 20px;
 
-            text-align: center;
+        }
+
+        .opcoes {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 15px;
 
         }
 
-
-        .questao p {
-
-            font-size: 22px;
-
-            line-height: 1.6;
-
-            font-weight: bold;
-
-        }
-
-
-        .alternativa {
+        .btn {
 
             width: 100%;
 
-            padding: 15px;
-
-            margin-bottom: 10px;
+            padding: 18px;
 
             border: none;
 
-            border-radius: 8px;
+            border-radius: 12px;
 
-            background-color: #38bdf8;
-
-            color: #0f172a;
-
-            font-size: 18px;
+            font-size: 19px;
 
             font-weight: bold;
 
             cursor: pointer;
 
-            transition: 0.2s;
+            transition:
+                transform .15s ease,
+                box-shadow .15s ease;
 
         }
 
+        .btn:hover {
 
-        .alternativa:hover {
+            transform:
+                translateY(-2px);
 
-            background-color: #7dd3fc;
-
-        }
-
-
-        .alternativa:disabled {
-
-            cursor: not-allowed;
-
-            opacity: 1;
+            box-shadow:
+                0 8px 18px
+                rgba(0,0,0,.18);
 
         }
 
+        .btn-professor {
 
-        .cronometro {
+            background: #2563eb;
 
-            font-size: 42px;
-
-            font-weight: bold;
-
-            color: #38bdf8;
-
-            margin: 20px 0;
+            color: white;
 
         }
 
+        .btn-aluno {
 
-        .pontuacao {
+            background: #16a34a;
 
-            text-align: center;
+            color: white;
 
-            font-size: 18px;
+        }
 
-            font-weight: bold;
+        .icone {
 
-            color: #f8fafc;
+            font-size: 48px;
 
-            margin-top: 15px;
+            margin-bottom: 10px;
+
+        }
+
+        .rodape {
+
+            margin-top: 25px;
+
+            color: #94a3b8;
+
+            font-size: 13px;
 
         }
 
     </style>
-
-
-    <script src="/socket.io/socket.io.js"></script>
-
-    <script src="salas.js"></script>
 
 </head>
 
 
 <body>
 
+    <main class="container">
 
-    <!-- =====================================================
-         LOGIN
-    ====================================================== -->
+        <section class="card">
 
-    <div
-        class="card"
-        id="tela-login"
-    >
+            <div class="icone">
+                🏙️
+            </div>
 
-        <h1>
-            Cidade Dorme
-        </h1>
+            <h1>
+                Cidade Dorme
+            </h1>
 
-
-        <h2
-            style="
-                font-size:14px;
-                color:#94a3b8;
-                margin-top:-10px;
-            "
-        >
-            Edição Frações
-        </h2>
-
-
-        <div class="form-group">
-
-            <label>
-                Seu Nome:
-            </label>
-
-
-            <input
-                type="text"
-                id="input-nome"
-                placeholder="Ex: Alison"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Escolha a Sala:
-            </label>
-
-
-            <select id="input-sala">
-
-                <option value="">
-                    Selecione uma sala
-                </option>
-
-            </select>
-
-        </div>
-
-
-        <div class="radio-group">
-
-            <button
-                type="button"
-                class="radio-btn"
-                id="btn-tipo-aluno"
-                onclick="mudarTipo('aluno')"
-            >
-                Aluno
-            </button>
-
-
-            <button
-                type="button"
-                class="radio-btn ativo"
-                id="btn-tipo-prof"
-                onclick="mudarTipo('professor')"
-            >
-                Professor
-            </button>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="btn-principal"
-            onclick="executarEntrada()"
-        >
-            ENTRAR NA SALA
-        </button>
-
-    </div>
-
-
-    <!-- =====================================================
-         JOGO
-    ====================================================== -->
-
-    <div
-        class="card escondido"
-        id="tela-jogo"
-    >
-
-        <div
-            id="badge-papel"
-            class="papel-badge"
-        >
-            Conectando...
-        </div>
-
-
-        <div id="painel-fase">
-
-            <h2 id="titulo-fase">
-                Aguardando...
+            <h2>
+                Edição Matemática
             </h2>
 
-        </div>
+
+            <p class="pergunta">
+                Como você vai entrar?
+            </p>
 
 
-        <hr
-            style="
-                border-color:#334155;
-                margin:16px 0;
-            "
-        >
+            <div class="opcoes">
+
+                <button
+                    class="btn btn-professor"
+                    onclick="entrarProfessor()"
+                >
+                    👨‍🏫 ENTRAR COMO PROFESSOR
+                </button>
 
 
-        <div id="area-conteudo"></div>
+                <button
+                    class="btn btn-aluno"
+                    onclick="entrarAluno()"
+                >
+                    👨‍🎓 ENTRAR COMO ALUNO
+                </button>
 
-    </div>
+            </div>
+
+
+            <p class="rodape">
+                Jogo educativo de matemática
+            </p>
+
+        </section>
+
+    </main>
 
 
     <script>
 
-        const socket =
-            io();
+        function entrarProfessor() {
 
-
-        /* =====================================================
-           ESTADO
-        ====================================================== */
-
-        let souProfessor =
-            true;
-
-
-        let meuNome =
-            '';
-
-
-        let meuCodigoSala =
-            '';
-
-
-        let minutosSelecionados =
-            3;
-
-
-        let meuPapel =
-            null;
-
-
-        let minhaQuestaoDia =
-            null;
-
-
-        let respondeuQuestaoDia =
-            false;
-
-
-        let minhaQuestaoBonus =
-            null;
-
-
-        /* =====================================================
-           CARREGAR SALAS
-        ====================================================== */
-
-        function carregarSalas() {
-
-            const select =
-                document.getElementById(
-                    'input-sala'
-                );
-
-
-            SALAS_DISPONIVEIS.forEach(
-                sala => {
-
-                    const option =
-                        document.createElement(
-                            'option'
-                        );
-
-
-                    option.value =
-                        sala.codigo;
-
-
-                    option.textContent =
-                        sala.nome;
-
-
-                    select.appendChild(
-                        option
-                    );
-
-                }
-            );
+            window.location.href =
+                "professor.html";
 
         }
 
 
-        carregarSalas();
+        function entrarAluno() {
 
-
-        /* =====================================================
-           TIPO DE USUÁRIO
-        ====================================================== */
-
-        function mudarTipo(
-            tipo
-        ) {
-
-            const btnAluno =
-                document.getElementById(
-                    'btn-tipo-aluno'
-                );
-
-
-            const btnProf =
-                document.getElementById(
-                    'btn-tipo-prof'
-                );
-
-
-            if (
-                tipo === 'aluno'
-            ) {
-
-                souProfessor =
-                    false;
-
-
-                btnAluno.classList.add(
-                    'ativo'
-                );
-
-
-                btnProf.classList.remove(
-                    'ativo'
-                );
-
-            }
-
-            else {
-
-                souProfessor =
-                    true;
-
-
-                btnProf.classList.add(
-                    'ativo'
-                );
-
-
-                btnAluno.classList.remove(
-                    'ativo'
-                );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           ENTRAR
-        ====================================================== */
-
-        function executarEntrada() {
-
-            meuNome =
-                document
-                    .getElementById(
-                        'input-nome'
-                    )
-                    .value
-                    .trim();
-
-
-            meuCodigoSala =
-                document
-                    .getElementById(
-                        'input-sala'
-                    )
-                    .value
-                    .trim()
-                    .toUpperCase();
-
-
-            if (!meuNome) {
-
-                alert(
-                    'Digite seu nome.'
-                );
-
-                return;
-
-            }
-
-
-            if (!meuCodigoSala) {
-
-                alert(
-                    'Escolha uma sala.'
-                );
-
-                return;
-
-            }
-
-
-            socket.emit(
-                'entrarNaSala',
-                {
-
-                    nome:
-                        meuNome,
-
-                    codigoSala:
-                        meuCodigoSala,
-
-                    eProfessor:
-                        souProfessor
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           ERRO DE ENTRADA
-        ====================================================== */
-
-        socket.on(
-            'entradaErro',
-            mensagem => {
-
-                alert(
-                    mensagem
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           ENTRADA CONFIRMADA
-        ====================================================== */
-
-        socket.on(
-            'entrouSucesso',
-            () => {
-
-                document
-                    .getElementById(
-                        'tela-login'
-                    )
-                    .classList
-                    .add(
-                        'escondido'
-                    );
-
-
-                document
-                    .getElementById(
-                        'tela-jogo'
-                    )
-                    .classList
-                    .remove(
-                        'escondido'
-                    );
-
-
-                if (
-                    souProfessor
-                ) {
-
-                    document
-                        .getElementById(
-                            'badge-papel'
-                        )
-                        .innerText =
-                        'FUNÇÃO: PROFESSOR (TELÃO)';
-
-                }
-
-                else {
-
-                    document
-                        .getElementById(
-                            'badge-papel'
-                        )
-                        .innerText =
-                        'PARTICIPANTE';
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           PAPEL PRIVADO
-        ====================================================== */
-
-        socket.on(
-            'dadosPrivados',
-            dados => {
-
-                meuPapel =
-                    dados.papel;
-
-
-                console.log(
-                    'Papel recebido de forma privada.'
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           FASE ATUALIZADA
-        ====================================================== */
-
-        socket.on(
-            'faseAtualizada',
-            sala => {
-
-                renderizarTela(
-                    sala
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           RENDERIZAR TELA
-        ====================================================== */
-
-        function renderizarTela(
-            sala
-        ) {
-
-            if (!sala) return;
-
-
-            const tituloFase =
-                document.getElementById(
-                    'titulo-fase'
-                );
-
-
-            const areaConteudo =
-                document.getElementById(
-                    'area-conteudo'
-                );
-
-
-            /* =================================================
-               PROFESSOR
-            ================================================= */
-
-            if (
-                souProfessor
-            ) {
-
-                tituloFase.innerText =
-                    'PAINEL DO PROFESSOR';
-
-
-                if (
-                    sala.fase ===
-                        'AGUARDANDO_TEMPO' ||
-                    sala.fase ===
-                        'LOBBY'
-                ) {
-
-                    areaConteudo.innerHTML = `
-
-                        <div
-                            style="
-                                text-align:center;
-                            "
-                        >
-
-                            <h3
-                                style="
-                                    color:#38bdf8;
-                                    margin-bottom:15px;
-                                "
-                            >
-                                ⏱️ Configurar Tempo do DIA
-                            </h3>
-
-
-                            <p
-                                style="
-                                    color:#cbd5e1;
-                                    margin-bottom:20px;
-                                    font-size:14px;
-                                "
-                            >
-                                Defina a duração da rodada:
-                            </p>
-
-
-                            <div
-                                style="
-                                    display:flex;
-                                    justify-content:center;
-                                    align-items:center;
-                                    gap:15px;
-                                    margin-bottom:20px;
-                                "
-                            >
-
-                                <button
-                                    style="
-                                        padding:10px 20px;
-                                        font-size:20px;
-                                        background-color:#ef4444;
-                                        color:white;
-                                        border:none;
-                                        border-radius:6px;
-                                        cursor:pointer;
-                                    "
-                                    onclick="alterarTempo(-1)"
-                                >
-                                    -
-                                </button>
-
-
-                                <span
-                                    id="valor-minutos"
-                                    style="
-                                        font-size:22px;
-                                        font-weight:bold;
-                                        color:white;
-                                    "
-                                >
-                                    ${minutosSelecionados} min
-                                </span>
-
-
-                                <button
-                                    style="
-                                        padding:10px 20px;
-                                        font-size:20px;
-                                        background-color:#22c55e;
-                                        color:white;
-                                        border:none;
-                                        border-radius:6px;
-                                        cursor:pointer;
-                                    "
-                                    onclick="alterarTempo(1)"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-
-                            <button
-                                class="btn-principal"
-                                onclick="confirmarTempo()"
-                            >
-                                ▶️ DEFINIR E INICIAR PARTIDA
-                            </button>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-                else if (
-                    sala.fase === 'DIA'
-                ) {
-
-                    areaConteudo.innerHTML = `
-
-                        <div
-                            style="
-                                text-align:center;
-                            "
-                        >
-
-                            <h3
-                                style="
-                                    color:#f59e0b;
-                                    margin-bottom:15px;
-                                "
-                            >
-                                ☀️ FASE DIA
-                            </h3>
-
-
-                            <p
-                                style="
-                                    color:#cbd5e1;
-                                    margin-bottom:10px;
-                                "
-                            >
-                                Os alunos estão respondendo
-                                às questões.
-                            </p>
-
-
-                            <div
-                                id="cronometro-professor"
-                                class="cronometro"
-                            >
-                                00:00
-                            </div>
-
-
-                            <p
-                                style="
-                                    color:#94a3b8;
-                                    font-size:13px;
-                                "
-                            >
-                                A Fase Bônus começará
-                                automaticamente quando
-                                o tempo terminar.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-                else if (
-                    sala.fase === 'BONUS'
-                ) {
-
-                    areaConteudo.innerHTML = `
-
-                        <div
-                            style="
-                                text-align:center;
-                            "
-                        >
-
-                            <h3
-                                style="
-                                    color:#f59e0b;
-                                    margin-bottom:15px;
-                                "
-                            >
-                                🎁 FASE BÔNUS
-                            </h3>
-
-
-                            <p
-                                style="
-                                    color:#cbd5e1;
-                                "
-                            >
-                                Os alunos estão respondendo
-                                individualmente.
-                            </p>
-
-                        </div>
-
-                    `;
-
-                }
-
-
-                return;
-
-            }
-
-
-            /* =================================================
-               ALUNO
-            ================================================= */
-
-            tituloFase.innerText =
-                `FASE ATUAL: ${sala.fase}`;
-
-
-            if (
-                sala.fase === 'BONUS' &&
-                minhaQuestaoBonus
-            ) {
-
-                mostrarQuestaoBonus(
-                    minhaQuestaoBonus
-                );
-
-                return;
-
-            }
-
-
-            if (
-                sala.fase === 'DIA' &&
-                minhaQuestaoDia
-            ) {
-
-                mostrarQuestaoDia(
-                    minhaQuestaoDia
-                );
-
-                return;
-
-            }
-
-
-            areaConteudo.innerHTML = `
-
-                <p
-                    style="
-                        text-align:center;
-                        color:#cbd5e1;
-                    "
-                >
-                    Aguardando o início da partida...
-                </p>
-
-            `;
-
-        }
-
-
-        /* =====================================================
-           TEMPO
-        ====================================================== */
-
-        function alterarTempo(
-            delta
-        ) {
-
-            if (
-                minutosSelecionados +
-                delta >= 1
-            ) {
-
-                minutosSelecionados +=
-                    delta;
-
-
-                const elemento =
-                    document.getElementById(
-                        'valor-minutos'
-                    );
-
-
-                if (elemento) {
-
-                    elemento.innerText =
-                        `${minutosSelecionados} min`;
-
-                }
-
-            }
-
-        }
-
-
-        function confirmarTempo() {
-
-            socket.emit(
-                'definirEIniciarTempo',
-                {
-
-                    codigoSala:
-                        meuCodigoSala,
-
-                    duracaoSegundos:
-                        minutosSelecionados *
-                        60
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           CRONÔMETRO
-        ====================================================== */
-
-        socket.on(
-            'cronometroAtualizado',
-            segundos => {
-
-                atualizarCronometro(
-                    segundos
-                );
-
-            }
-        );
-
-
-        function atualizarCronometro(
-            segundos
-        ) {
-
-            const minutos =
-                Math.floor(
-                    segundos / 60
-                );
-
-
-            const segundosRestantes =
-                segundos % 60;
-
-
-            const texto =
-                String(
-                    minutos
-                )
-                .padStart(2, '0') +
-                ':' +
-                String(
-                    segundosRestantes
-                )
-                .padStart(2, '0');
-
-
-            const elemento =
-                document.getElementById(
-                    'cronometro-professor'
-                );
-
-
-            if (elemento) {
-
-                elemento.innerText =
-                    texto;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           NOVA QUESTÃO DIA
-        ====================================================== */
-
-        socket.on(
-            'novaQuestaoDia',
-            questao => {
-
-                minhaQuestaoDia =
-                    questao;
-
-
-                respondeuQuestaoDia =
-                    false;
-
-
-                mostrarQuestaoDia(
-                    questao
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOSTRAR QUESTÃO DIA
-        ====================================================== */
-
-        function mostrarQuestaoDia(
-            questao
-        ) {
-
-            if (
-                souProfessor
-            ) return;
-
-
-            const tituloFase =
-                document.getElementById(
-                    'titulo-fase'
-                );
-
-
-            const areaConteudo =
-                document.getElementById(
-                    'area-conteudo'
-                );
-
-
-            tituloFase.innerText =
-                '☀️ FASE DIA';
-
-
-            areaConteudo.innerHTML = `
-
-                <div class="questao">
-
-                    <p>
-                        ${questao.texto}
-                    </p>
-
-                </div>
-
-
-                <div
-                    id="alternativas-dia"
-                >
-
-                    ${questao.alternativas
-                        .map(
-                            (alternativa, indice) => `
-
-                                <button
-                                    class="alternativa"
-                                    data-valor="${alternativa}"
-                                    onclick="
-                                        responderQuestaoDia(
-                                            '${alternativa}',
-                                            this
-                                        )
-                                    "
-                                >
-
-                                    ${String.fromCharCode(
-                                        65 + indice
-                                    )})
-
-                                    ${alternativa}
-
-                                </button>
-
-                            `
-                        )
-                        .join('')}
-
-                </div>
-
-
-                <div
-                    id="resultado-dia"
-                    style="
-                        text-align:center;
-                        margin-top:15px;
-                        font-weight:bold;
-                        min-height:24px;
-                    "
-                ></div>
-
-            `;
-
-        }
-
-
-        /* =====================================================
-           RESPONDER DIA
-        ====================================================== */
-
-        function responderQuestaoDia(
-            resposta,
-            botao
-        ) {
-
-            if (
-                respondeuQuestaoDia ||
-                !minhaQuestaoDia
-            ) {
-
-                return;
-
-            }
-
-
-            respondeuQuestaoDia =
-                true;
-
-
-            const botoes =
-                document.querySelectorAll(
-                    '#alternativas-dia button'
-                );
-
-
-            botoes.forEach(
-                b => {
-
-                    b.disabled =
-                        true;
-
-                }
-            );
-
-
-            socket.emit(
-                'responderQuestaoDia',
-                {
-
-                    codigoSala:
-                        meuCodigoSala,
-
-                    resposta:
-                        resposta
-
-                }
-            );
-
-        }
-
-
-        /* =====================================================
-           RESULTADO DIA
-        ====================================================== */
-
-        socket.on(
-            'resultadoQuestaoDia',
-            resultado => {
-
-                const botoes =
-                    document.querySelectorAll(
-                        '#alternativas-dia button'
-                    );
-
-
-                botoes.forEach(
-                    botao => {
-
-                        const valor =
-                            botao.dataset.valor;
-
-
-                        if (
-                            valor ===
-                            resultado.respostaCorreta
-                        ) {
-
-                            botao.style.backgroundColor =
-                                '#22c55e';
-
-                            botao.style.color =
-                                'white';
-
-                        }
-
-                    }
-                );
-
-
-                if (
-                    !resultado.acertou
-                ) {
-
-                    botoes.forEach(
-                        botao => {
-
-                            const valor =
-                                botao.dataset.valor;
-
-
-                            if (
-                                valor ===
-                                resultado.respostaEscolhida
-                            ) {
-
-                                botao.style.backgroundColor =
-                                    '#ef4444';
-
-                                botao.style.color =
-                                    'white';
-
-                            }
-
-                        }
-                    );
-
-                }
-
-
-                const resultadoElemento =
-                    document.getElementById(
-                        'resultado-dia'
-                    );
-
-
-                if (
-                    resultadoElemento
-                ) {
-
-                    resultadoElemento.innerText =
-                        resultado.acertou
-
-                            ? `✅ Acertou! +10 pontos`
-
-                            : `❌ Errou! -5 pontos`;
-
-
-                    resultadoElemento.style.color =
-                        resultado.acertou
-                            ? '#22c55e'
-                            : '#ef4444';
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           QUESTÃO BÔNUS
-        ====================================================== */
-
-        socket.on(
-            'questaoBonus',
-            questao => {
-
-                minhaQuestaoBonus =
-                    questao;
-
-
-                mostrarQuestaoBonus(
-                    questao
-                );
-
-            }
-        );
-
-
-        function mostrarQuestaoBonus(
-            questao
-        ) {
-
-            if (
-                souProfessor
-            ) return;
-
-
-            const tituloFase =
-                document.getElementById(
-                    'titulo-fase'
-                );
-
-
-            const areaConteudo =
-                document.getElementById(
-                    'area-conteudo'
-                );
-
-
-            tituloFase.innerText =
-                '🎁 FASE BÔNUS';
-
-
-            if (
-                questao.tipo ===
-                'MATEMATICA'
-            ) {
-
-                areaConteudo.innerHTML = `
-
-                    <div class="questao">
-
-                        <p>
-                            ${questao.texto}
-                        </p>
-
-                    </div>
-
-
-                    <div
-                        id="alternativas-bonus"
-                    >
-
-                        ${questao.alternativas
-                            .map(
-                                (alternativa, indice) => `
-
-                                    <button
-                                        class="alternativa"
-                                        onclick="
-                                            responderBonus(
-                                                ${indice}
-                                            )
-                                        "
-                                    >
-
-                                        ${String.fromCharCode(
-                                            65 + indice
-                                        )})
-
-                                        ${alternativa}
-
-                                    </button>
-
-                                `
-                            )
-                            .join('')}
-
-                    </div>
-
-                `;
-
-
-                return;
-
-            }
-
-
-            if (
-                questao.tipo ===
-                'ACAO_SECRETA'
-            ) {
-
-                areaConteudo.innerHTML = `
-
-                    <div class="questao">
-
-                        <p>
-                            ${questao.texto}
-                        </p>
-
-                    </div>
-
-
-                    <div
-                        id="alternativas-bonus"
-                    >
-
-                        ${questao.alternativas
-                            .map(
-                                (alternativa, indice) => `
-
-                                    <button
-                                        class="alternativa"
-                                        onclick="
-                                            responderBonus(
-                                                ${indice}
-                                            )
-                                        "
-                                    >
-
-                                        ${String.fromCharCode(
-                                            65 + indice
-                                        )})
-
-                                        ${alternativa.nome}
-
-                                    </button>
-
-                                `
-                            )
-                            .join('')}
-
-                    </div>
-
-                `;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           RESPONDER BÔNUS
-        ====================================================== */
-
-        function responderBonus(
-            indice
-        ) {
-
-            if (
-                !minhaQuestaoBonus
-            ) {
-
-                return;
-
-            }
-
-
-            const alternativa =
-                minhaQuestaoBonus
-                    .alternativas[
-                        indice
-                    ];
-
-
-            socket.emit(
-                'responderBonus',
-                {
-
-                    codigoSala:
-                        meuCodigoSala,
-
-                    alternativa:
-                        alternativa
-
-                }
-            );
-
-
-            const botoes =
-                document.querySelectorAll(
-                    '#alternativas-bonus button'
-                );
-
-
-            botoes.forEach(
-                botao => {
-
-                    botao.disabled =
-                        true;
-
-                }
-            );
-
-
-            const areaConteudo =
-                document.getElementById(
-                    'area-conteudo'
-                );
-
-
-            areaConteudo.innerHTML += `
-
-                <p
-                    style="
-                        text-align:center;
-                        color:#22c55e;
-                        margin-top:15px;
-                        font-weight:bold;
-                    "
-                >
-                    ✓ Resposta registrada!
-                </p>
-
-            `;
+            window.location.href =
+                "aluno.html";
 
         }
 
@@ -1693,3 +258,4 @@
 </body>
 
 </html>
+```
