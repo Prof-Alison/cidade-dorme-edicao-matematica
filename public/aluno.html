@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cidade Dorme - Aluno</title>
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           ANIMAÇÕES ESPECIAIS
+        ===================================================== */
+
+        .tela-especial {
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        /* =====================================================
+           CIDADE DORME
+        ===================================================== */
+
+        .cidade-dorme {
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(80, 90, 160, 0.35),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    180deg,
+                    #030617 0%,
+                    #080d25 55%,
+                    #02030b 100%
+                );
+
+            color: white;
+            border-radius: 18px;
+
+            animation: entrarNoite 1.5s ease;
+        }
+
+
+        .lua {
+            width: 95px;
+            height: 95px;
+
+            border-radius: 50%;
+
+            background: #f5f1c7;
+
+            box-shadow:
+                0 0 20px rgba(255,255,220,0.8),
+                0 0 60px rgba(255,255,220,0.35);
+
+            margin-bottom: 25px;
+
+            position: relative;
+
+            animation:
+                surgirLua 1.8s ease,
+                flutuarLua 4s ease-in-out infinite;
+        }
+
+
+        .lua::after {
+            content: "";
+
+            position: absolute;
+
+            width: 95px;
+            height: 95px;
+
+            border-radius: 50%;
+
+            background: #080d25;
+
+            left: 25px;
+            top: -10px;
+        }
+
+
+        .estrela {
+            position: absolute;
+
+            color: white;
+
+            font-size: 12px;
+
+            animation:
+                piscarEstrela 2s infinite alternate;
+        }
+
+
+        .estrela:nth-child(1) {
+            top: 15%;
+            left: 15%;
+        }
+
+        .estrela:nth-child(2) {
+            top: 28%;
+            right: 18%;
+            animation-delay: .5s;
+        }
+
+        .estrela:nth-child(3) {
+            top: 12%;
+            right: 35%;
+            animation-delay: 1s;
+        }
+
+        .estrela:nth-child(4) {
+            top: 40%;
+            left: 25%;
+            animation-delay: 1.5s;
+        }
+
+        .estrela:nth-child(5) {
+            top: 35%;
+            right: 30%;
+            animation-delay: .8s;
+        }
+
+
+        .titulo-noite {
+            font-size: clamp(32px, 8vw, 58px);
+            letter-spacing: 4px;
+            margin: 10px 0;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,.5),
+                0 0 25px rgba(100,120,255,.5);
+
+            animation:
+                aparecerTitulo 1.5s ease;
+        }
+
+
+        .subtitulo-noite {
+            font-size: 18px;
+            opacity: .8;
+            margin-top: 10px;
+
+            animation:
+                aparecerSubtitulo 2s ease;
+        }
+
+
+        .zzz {
+            position: absolute;
+
+            font-size: 30px;
+
+            right: 25%;
+            top: 32%;
+
+            opacity: 0;
+
+            animation:
+                subirZ 3s ease-in-out infinite;
+        }
+
+
+        /* =====================================================
+           CIDADE ACORDA
+        ===================================================== */
+
+        .cidade-acorda {
+            min-height: 420px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(255,220,100,.35),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    #18254d 0%,
+                    #426aa0 55%,
+                    #f0b45b 100%
+                );
+
+            color: white;
+
+            border-radius: 18px;
+
+            animation:
+                amanhecer 2s ease;
+        }
+
+
+        .sol {
+            width: 105px;
+            height: 105px;
+
+            background: #ffd95a;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 25px #ffd95a,
+                0 0 70px rgba(255,210,70,.7);
+
+            margin-bottom: 30px;
+
+            animation:
+                nascerSol 2.5s ease;
+        }
+
+
+        .titulo-manha {
+            font-size: clamp(32px, 8vw, 58px);
+
+            letter-spacing: 4px;
+
+            text-shadow:
+                0 3px 12px rgba(0,0,0,.4);
+
+            animation:
+                aparecerTitulo 1.5s ease;
+        }
+
+
+        .subtitulo-manha {
+            font-size: 18px;
+            margin-top: 12px;
+            opacity: .9;
+        }
+
+
+        /* =====================================================
+           VOTAÇÃO
+        ===================================================== */
+
+        #telaVotacaoAluno {
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(91,60,196,.18),
+                    transparent 45%
+                ),
+                white;
+
+            overflow: hidden;
+
+        }
+
+
+        .votacao-cabecalho {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .icone-votacao {
+
+            font-size: 55px;
+
+            margin-bottom: 5px;
+
+            animation:
+                pulsarVotacao 2s infinite;
+
+        }
+
+
+        .titulo-votacao {
+
+            margin: 0;
+
+            font-size: clamp(
+                28px,
+                6vw,
+                42px
+            );
+
+            color: #30245c;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        .subtitulo-votacao {
+
+            color: #666;
+
+            font-size: 17px;
+
+            margin-top: 10px;
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =====================================================
+           CARTAS DOS JOGADORES
+        ===================================================== */
+
+        #listaVotacao {
+
+            display: grid !important;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(190px, 1fr)
+                );
+
+            gap: 18px !important;
+
+            margin-top: 25px !important;
+
+            width: 100%;
+
+        }
+
+
+        .carta-jogador {
+
+            position: relative;
+
+            border: 2px solid #e4e0f5;
+
+            border-radius: 18px;
+
+            padding: 22px 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #f5f2ff
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(40,25,80,.12);
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                border-color .2s ease;
+
+            min-height: 155px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #222;
+
+        }
+
+
+        .carta-jogador:hover {
+
+            transform:
+                translateY(-5px)
+                scale(1.02);
+
+            border-color: #5b3cc4;
+
+            box-shadow:
+                0 12px 28px
+                rgba(91,60,196,.25);
+
+        }
+
+
+        .carta-jogador:active {
+
+            transform:
+                scale(.97);
+
+        }
+
+
+        .avatar-jogador {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5b3cc4,
+                    #8c6be8
+                );
+
+            color: white;
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+            box-shadow:
+                0 5px 12px
+                rgba(91,60,196,.25);
+
+        }
+
+
+        .nome-jogador {
+
+            font-size: 19px;
+
+            font-weight: bold;
+
+            color: #30245c;
+
+            word-break: break-word;
+
+            text-align: center;
+
+        }
+
+
+        .pontuacao-jogador {
+
+            font-size: 14px;
+
+            color: #777;
+
+            margin-top: 6px;
+
+        }
+
+
+        .texto-votar {
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: #5b3cc4;
+
+            font-weight: bold;
+
+            margin-top: 12px;
+
+        }
+
+
+        /* =====================================================
+           CARTA VOTADA
+        ===================================================== */
+
+        .carta-votada {
+
+            border-color: #32a852 !important;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ecfff1,
+                    #dff8e6
+                ) !important;
+
+            cursor: default;
+
+            transform: none !important;
+
+        }
+
+
+        .carta-votada:hover {
+
+            transform: none !important;
+
+            box-shadow:
+                0 8px 20px
+                rgba(40,25,80,.12);
+
+        }
+
+
+        .carta-votada .avatar-jogador {
+
+            background: #32a852;
+
+        }
+
+
+        .carta-votada .texto-votar {
+
+            color: #22833e;
+
+        }
+
+
+        .marca-voto {
+
+            position: absolute;
+
+            top: 10px;
+
+            right: 10px;
+
+            width: 28px;
+
+            height: 28px;
+
+            border-radius: 50%;
+
+            background: #32a852;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           MENSAGEM DA VOTAÇÃO
+        ===================================================== */
+
+        #mensagemVotacao {
+
+            background: #f5f2ff;
+
+            color: #30245c;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            margin-top: 22px !important;
+
+        }
+
+
+        /* =====================================================
+           ELIMINADO
+        ===================================================== */
+
+        .eliminado-especial {
+
+            min-height: 420px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(150,0,0,.2),
+                    transparent 50%
+                ),
+                linear-gradient(
+                    180deg,
+                    #080808,
+                    #170707,
+                    #030303
+                );
+
+            color: white;
+
+            border-radius: 18px;
+
+            animation:
+                entrarEliminado 1.2s ease;
+        }
+
+
+        .icone-caveira {
+
+            font-size: 90px;
+
+            filter:
+                drop-shadow(
+                    0 0 15px rgba(255,0,0,.35)
+                );
+
+            animation:
+                pulsarCaveira 2s infinite;
+        }
+
+
+        .titulo-eliminado-especial {
+
+            color: #ff4b4b;
+
+            font-size: clamp(26px, 6vw, 42px);
+
+            margin-top: 20px;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 0 15px rgba(255,0,0,.35);
+        }
+
+
+        /* =====================================================
+           FINAL
+        ===================================================== */
+
+        .final-especial {
+
+            min-height: 420px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            border-radius: 18px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,255,255,.15),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #26334d
+                );
+
+            color: white;
+
+            animation:
+                aparecerFinal 1.5s ease;
+        }
+
+
+        .icone-final {
+
+            font-size: 85px;
+
+            animation:
+                pulsarFinal 2s infinite;
+        }
+
+
+        .titulo-final {
+
+            font-size: clamp(28px, 7vw, 48px);
+
+            margin-top: 20px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =====================================================
+           ANIMAÇÕES
+        ===================================================== */
+
+        @keyframes entrarNoite {
+
+            from {
+                opacity: 0;
+                filter: brightness(2);
+            }
+
+            to {
+                opacity: 1;
+                filter: brightness(1);
+            }
+
+        }
+
+
+        @keyframes surgirLua {
+
+            from {
+                transform: translateY(60px) scale(.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes flutuarLua {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+        @keyframes piscarEstrela {
+
+            from {
+                opacity: .25;
+                transform: scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+        }
+
+
+        @keyframes aparecerTitulo {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes aparecerSubtitulo {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: .8;
+            }
+
+        }
+
+
+        @keyframes subirZ {
+
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-80px);
+                opacity: 0;
+            }
+
+        }
+
+
+        @keyframes amanhecer {
+
+            from {
+                opacity: 0;
+                filter: brightness(.2);
+            }
+
+            to {
+                opacity: 1;
+                filter: brightness(1);
+            }
+
+        }
+
+
+        @keyframes nascerSol {
+
+            from {
+                transform: translateY(80px) scale(.3);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes entrarEliminado {
+
+            from {
+                opacity: 0;
+                transform: scale(.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes pulsarCaveira {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        @keyframes aparecerFinal {
+
+            from {
+                opacity: 0;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes pulsarFinal {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+        }
+
+
+        @keyframes pulsarVotacao {
+
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+        }
+
+
+        /* =====================================================
+           CELULAR
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .cidade-dorme,
+            .cidade-acorda,
+            .eliminado-especial,
+            .final-especial {
+
+                min-height: 380px;
+            }
+
+
+            .lua,
+            .sol {
+
+                width: 80px;
+                height: 80px;
+
+            }
+
+
+            .lua::after {
+
+                width: 80px;
+                height: 80px;
+
+            }
+
+
+            .icone-caveira,
+            .icone-final {
+
+                font-size: 70px;
+
+            }
+
+
+            #listaVotacao {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .carta-jogador {
+
+                min-height: 135px;
+
+            }
+
+        }
+
+        /* =====================================================
+   CARTAS DE VOTAÇÃO
+===================================================== */
+
+#listaVotacao {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.carta-votacao {
+    position: relative;
+    min-height: 110px;
+
+    border: 3px solid #d8d8d8;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #f3f3f3
+    );
+
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.12);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.carta-votacao:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.18);
+
+    border-color: #777;
+}
+
+.carta-votacao.selecionada {
+    border-color: #2196f3;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e3f2fd,
+            #bbdefb
+        );
+
+    box-shadow:
+        0 0 0 4px rgba(33,150,243,.15),
+        0 8px 20px rgba(33,150,243,.25);
+
+    transform: translateY(-4px);
+}
+
+.nome-carta-votacao {
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    word-break: break-word;
+}
+
+.check-votacao {
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    background: #2196f3;
+    color: white;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.carta-votacao.selecionada .check-votacao {
+    display: flex;
+}
+
+#btnConfirmarVoto {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #2196f3;
+    color: white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+#btnConfirmarVoto:hover {
+    transform: translateY(-2px);
+}
+
+#btnConfirmarVoto:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.voto-confirmado {
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    border-radius: 15px;
+
+    background: #e8f5e9;
+
+    border: 2px solid #4caf50;
+
+    color: #2e7d32;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+
+    #listaVotacao {
+        grid-template-columns: 1fr;
+    }
+
+    .carta-votacao {
+        min-height: 90px;
+    }
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+
+        <!-- =====================================================
+             ENTRADA
+        ====================================================== -->
+
+        <section
+            id="telaEntrada"
+            class="card"
+        >
+
+            <h1>
+                Entrar na sala
+            </h1>
+
+            <label>
+                Seu nome
+            </label>
+
+            <input
+                id="nomeAluno"
+                type="text"
+                placeholder="Digite seu nome"
+                autocomplete="off"
+            >
+
+            <label>
+                Código da sala
+            </label>
+
+            <input
+                id="codigoSala"
+                type="text"
+                maxlength="4"
+                placeholder="Ex.: 7K4P"
+                autocomplete="off"
+            >
+
+            <button
+                id="btnEntrar"
+                class="btn principal"
+            >
+                ENTRAR
+            </button>
+
+            <p
+                id="mensagemErro"
+                class="erro"
+            ></p>
+
+        </section>
+
+
+        <!-- =====================================================
+             ESPERA
+        ====================================================== -->
+
+        <section
+            id="telaEsperaAluno"
+            class="card escondido"
+        >
+
+            <h1>
+                Você entrou!
+            </h1>
+
+            <div class="espera">
+
+                <div class="icone">
+                    ✓
+                </div>
+
+                <h2>
+                    Aguarde o professor
+                    iniciar o DIA.
+                </h2>
+
+                <p>
+                    Não feche esta página.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DIA
+        ====================================================== -->
+
+        <section
+            id="telaJogo"
+            class="card escondido"
+        >
+
+            <h1>
+                FASE DIA
+            </h1>
+
+            <div
+                id="cronometroAluno"
+                class="cronometro"
+            >
+                00:00
+            </div>
+
+            <div
+                id="pontuacaoAluno"
+                style="
+                    text-align:center;
+                    font-size:22px;
+                    font-weight:bold;
+                    margin:15px 0;
+                "
+            >
+                Pontuação: 0
+            </div>
+
+            <div id="questao"></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BÔNUS
+        ====================================================== -->
+
+        <section
+            id="telaBonusAluno"
+            class="card escondido"
+        >
+
+            <h1 id="tituloBonus">
+                FASE BÔNUS
+            </h1>
+
+            <div id="questaoBonus"></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CIDADE DORME
+        ====================================================== -->
+
+        <section
+            id="telaCidadeDorme"
+            class="card escondido tela-especial cidade-dorme"
+        >
+
+            <span class="estrela">✦</span>
+            <span class="estrela">✦</span>
+            <span class="estrela">✧</span>
+            <span class="estrela">✦</span>
+            <span class="estrela">✧</span>
+
+            <div class="lua"></div>
+
+            <div class="zzz">
+                Z
+            </div>
+
+            <div
+                class="zzz"
+                style="
+                    right:20%;
+                    top:38%;
+                    animation-delay:1s;
+                "
+            >
+                Z
+            </div>
+
+            <h1 class="titulo-noite">
+                CIDADE DORME
+            </h1>
+
+            <p class="subtitulo-noite">
+                A noite caiu sobre a cidade...
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             CIDADE ACORDA
+        ====================================================== -->
+
+        <section
+            id="telaCidadeAcorda"
+            class="card escondido tela-especial cidade-acorda"
+        >
+
+            <div class="sol"></div>
+
+            <h1 class="titulo-manha">
+                CIDADE ACORDA
+            </h1>
+
+            <p class="subtitulo-manha">
+                Uma nova manhã começa...
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             VOTAÇÃO
+        ====================================================== -->
+
+        <section
+            id="telaVotacaoAluno"
+            class="card escondido"
+        >
+
+            <div class="votacao-cabecalho">
+
+                <div class="icone-votacao">
+                    🗳️
+                </div>
+
+                <h1 class="titulo-votacao">
+                    QUEM É O ASSASSINO?
+                </h1>
+
+                <p class="subtitulo-votacao">
+                    Escolha cuidadosamente quem você acredita ser o assassino.
+                </p>
+
+            </div>
+
+
+            <div id="listaVotacao">
+            </div>
+
+
+            <p id="mensagemVotacao">
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             JOGADOR ELIMINADO
+        ====================================================== -->
+
+        <section
+            id="telaEliminado"
+            class="card escondido tela-especial eliminado-especial"
+        >
+
+            <div class="icone-caveira">
+                💀
+            </div>
+
+            <h2
+                id="tituloEliminado"
+                class="titulo-eliminado-especial"
+            >
+                VOCÊ FOI ELIMINADO
+            </h2>
+
+            <p
+                id="mensagemEliminado"
+                style="
+                    text-align:center;
+                    font-size:18px;
+                    margin-top:20px;
+                    max-width:500px;
+                    line-height:1.6;
+                "
+            >
+                Você foi uma vítima do terrível assassino que nos assombra.
+            </p>
+
+            <p
+                style="
+                    opacity:.65;
+                    margin-top:25px;
+                "
+            >
+                Você continuará acompanhando a partida.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             FIM DE JOGO
+        ====================================================== -->
+
+        <section
+            id="telaFim"
+            class="card escondido tela-especial final-especial"
+        >
+
+            <div class="icone-final">
+                🏆
+            </div>
+
+            <h1 class="titulo-final">
+                FIM DE JOGO
+            </h1>
+
+            <h2
+                id="mensagemFim"
+                style="
+                    text-align:center;
+                    margin-top:20px;
+                    max-width:600px;
+                    line-height:1.4;
+                "
+            >
+            </h2>
+
+            <p
+                id="pontuacaoFinal"
+                style="
+                    text-align:center;
+                    font-size:20px;
+                    font-weight:bold;
+                    margin-top:20px;
+                "
+            >
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="aluno.js"></script>
+
+</body>
+
+</html>

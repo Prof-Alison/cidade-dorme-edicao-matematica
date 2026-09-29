@@ -1,0 +1,535 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #17172f,
+            #30245c
+        );
+
+    min-height: 100vh;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+========================================================= */
+
+.container {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 30px 20px;
+
+}
+
+
+/* =========================================================
+   CARTÕES NORMAIS
+========================================================= */
+
+.card {
+
+    background: white;
+
+    color: #222;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.3);
+
+}
+
+
+h1,
+h2 {
+
+    text-align: center;
+
+}
+
+
+label {
+
+    display: block;
+
+    margin-top: 20px;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+}
+
+
+input,
+select {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border:
+        2px solid #ddd;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.btn {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-top: 25px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.principal {
+
+    background: #5b3cc4;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   ESCONDER
+========================================================= */
+
+.escondido {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   CÓDIGO DA SALA
+========================================================= */
+
+.codigoSala {
+
+    text-align: center;
+
+    margin: 25px 0;
+
+    padding: 20px;
+
+    background: #f0edff;
+
+    border-radius: 15px;
+
+}
+
+
+.codigoSala span {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+}
+
+
+.codigoSala strong {
+
+    display: block;
+
+    font-size: 42px;
+
+    letter-spacing: 8px;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+.contador {
+
+    text-align: center;
+
+    font-size: 22px;
+
+    margin: 20px 0;
+
+}
+
+
+/* =========================================================
+   ALUNOS
+========================================================= */
+
+.aluno {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    background: #f4f4f4;
+
+    border-radius: 10px;
+
+}
+
+
+/* =========================================================
+   BOTÃO REMOVER
+========================================================= */
+
+.btnRemover {
+
+    border: none;
+
+    background: #e53935;
+
+    color: white;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   CRONÔMETRO
+========================================================= */
+
+.cronometro {
+
+    text-align: center;
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    margin: 30px 0;
+
+}
+
+
+/* =========================================================
+   TELA DE ESPERA
+========================================================= */
+
+.espera {
+
+    text-align: center;
+
+    padding: 30px 10px;
+
+}
+
+
+.icone {
+
+    font-size: 70px;
+
+    color: #32a852;
+
+}
+
+
+/* =========================================================
+   ERROS
+========================================================= */
+
+.erro {
+
+    color: #d32f2f;
+
+    text-align: center;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   =========================================================
+   TELAS ESPECIAIS
+   =========================================================
+========================================================= */
+
+/*
+   Essas telas deixam de se comportar como simples
+   cartões dentro do .container.
+
+   Elas passam a ocupar a tela inteira e ficam por cima
+   de todo o restante da página.
+*/
+
+.tela-especial {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    padding:
+        30px;
+
+    border-radius: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   CIDADE DORME
+========================================================= */
+
+.cidade-dorme {
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(80, 90, 160, 0.35),
+            transparent 45%
+        ),
+        linear-gradient(
+            180deg,
+            #030617 0%,
+            #080d25 55%,
+            #02030b 100%
+        );
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   CIDADE ACORDA
+========================================================= */
+
+.cidade-acorda {
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(255,220,100,.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #18254d 0%,
+            #426aa0 55%,
+            #f0b45b 100%
+        );
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   ELIMINADO
+========================================================= */
+
+.eliminado-especial {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,0,0,.2),
+            transparent 50%
+        ),
+        linear-gradient(
+            180deg,
+            #080808,
+            #170707,
+            #030303
+        );
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-especial {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.15),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #111827,
+            #26334d
+        );
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   LUA
+========================================================= */
+
+.lua {
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   SOL
+========================================================= */
+
+.sol {
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   ESTRELAS
+========================================================= */
+
+.estrela {
+
+    position: absolute;
+
+}
+
+
+/* =========================================================
+   ZZZ
+========================================================= */
+
+.zzz {
+
+    position: absolute;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding:
+            20px 12px;
+
+    }
+
+
+    .card {
+
+        padding: 20px;
+
+    }
+
+
+    .codigoSala strong {
+
+        font-size: 32px;
+
+    }
+
+
+    .cronometro {
+
+        font-size: 48px;
+
+    }
+
+
+    .tela-especial {
+
+        padding: 20px;
+
+    }
+
+}

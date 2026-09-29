@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Professor - Cidade Dorme</title>
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           PAINEL DO PROFESSOR
+        ===================================================== */
+
+        .painelStatus {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #f1f1f1;
+            text-align: center;
+        }
+
+        .contadorVivos {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #222;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .contadorVivos span {
+            font-size: 30px;
+        }
+
+        .noticias {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 12px;
+            background: #f5f5f5;
+        }
+
+        .noticia {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 5px solid #444;
+        }
+
+        .noticia strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .noticia.destaque {
+            border-left-color: #e63946;
+        }
+
+        .noticia.sucesso {
+            border-left-color: #2a9d8f;
+        }
+
+        .noticia.noite {
+            border-left-color: #264653;
+            background: #e9ecef;
+        }
+
+        .noticia.votacao {
+            border-left-color: #f4a261;
+        }
+
+        .noticia.final {
+            border-left-color: #6a4c93;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .aluno {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        .aluno.morto {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        .btnRemover {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .resultadoGrande {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .placarVivos {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .listaVotacaoProfessor {
+            margin-top: 20px;
+        }
+
+        .votoResultado {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background: #f1f1f1;
+        }
+
+        /* =====================================================
+   TABELA DE RESULTADOS FINAIS
+===================================================== */
+
+.tabelaResultadosFinal {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    box-sizing: border-box;
+
+}
+
+
+.tabelaResultadosFinal table {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+    font-size: 18px;
+
+}
+
+
+.tabelaResultadosFinal th,
+.tabelaResultadosFinal td {
+
+    padding: 8px 5px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    overflow-wrap: break-word;
+
+}
+
+
+.tabelaResultadosFinal th {
+
+    font-size: 17px;
+
+}
+
+
+.tabelaResultadosFinal td:first-child,
+.tabelaResultadosFinal th:first-child {
+
+    width: 16%;
+
+    text-align: left;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(2),
+.tabelaResultadosFinal th:nth-child(2) {
+
+    width: 12%;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(3),
+.tabelaResultadosFinal th:nth-child(3) {
+
+    width: 11%;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(4),
+.tabelaResultadosFinal th:nth-child(4) {
+
+    width: 10%;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(5),
+.tabelaResultadosFinal th:nth-child(5) {
+
+    width: 12%;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(6),
+.tabelaResultadosFinal th:nth-child(6) {
+
+    width: 15%;
+
+}
+
+
+.tabelaResultadosFinal td:nth-child(7),
+.tabelaResultadosFinal th:nth-child(7) {
+
+    width: 24%;
+
+}
+
+
+/* Mensagem final abaixo da tabela */
+
+.resultadoFinalMensagem {
+
+    margin-top: 20px;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    line-height: 1.2;
+
+}
+
+
+/* =====================================================
+   CELULAR / TELA PEQUENA
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .tabelaResultadosFinal {
+
+        overflow-x: auto;
+
+    }
+
+
+    .tabelaResultadosFinal table {
+
+        min-width: 700px;
+
+        font-size: 15px;
+
+    }
+
+
+    .tabelaResultadosFinal th {
+
+        font-size: 14px;
+
+    }
+
+
+    .resultadoFinalMensagem {
+
+        font-size: 22px;
+
+    }
+
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+<main class="container">
+
+
+    <!-- =====================================================
+         CONFIGURAÇÃO
+    ====================================================== -->
+
+    <section
+        id="telaConfiguracao"
+        class="card"
+    >
+
+        <h1>
+            Cidade Dorme
+        </h1>
+
+        <h2>
+            Edição Matemática
+        </h2>
+
+
+        <label>
+            Nome do professor
+        </label>
+
+        <input
+            id="nomeProfessor"
+            type="text"
+            placeholder="Digite seu nome"
+            autocomplete="off"
+        >
+
+
+        <label>
+            Sala
+        </label>
+
+        <select
+            id="salaSelecionada"
+        ></select>
+
+
+        <label>
+            Duração do Dia
+        </label>
+
+        <select
+            id="duracaoDia"
+        >
+
+            <option value="60">
+                1 minuto
+            </option>
+
+            <option value="180">
+                3 minutos
+            </option>
+
+            <option value="300">
+                5 minutos
+            </option>
+
+            <option value="600">
+                10 minutos
+            </option>
+
+        </select>
+
+
+        <button
+            id="btnCriarSala"
+            class="btn principal"
+        >
+            COMEÇAR
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SALA DE ESPERA
+    ====================================================== -->
+
+    <section
+        id="telaEspera"
+        class="card escondido"
+    >
+
+        <h1 id="nomeSala">
+            Sala
+        </h1>
+
+        <p id="descricaoSala"></p>
+
+
+        <div class="codigoSala">
+
+            <span>
+                CÓDIGO DA SALA
+            </span>
+
+            <strong id="codigoAcesso">
+                ----
+            </strong>
+
+        </div>
+
+
+        <div class="contador">
+
+            👥
+
+            <strong id="quantidadeAlunos">
+                0
+            </strong>
+
+            alunos
+
+        </div>
+
+
+        <h3>
+            Alunos na sala
+        </h3>
+
+
+        <div id="listaAlunos">
+
+            <p>
+                Aguardando alunos entrarem...
+            </p>
+
+        </div>
+
+
+        <button
+            id="btnIniciarDia"
+            class="btn principal"
+        >
+            INICIAR DIA
+        </button>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DIA
+    ====================================================== -->
+
+    <section
+        id="telaDia"
+        class="card escondido"
+    >
+
+        <h1>
+            FASE DIA
+        </h1>
+
+
+        <div
+            id="cronometro"
+            class="cronometro"
+        >
+            00:00
+        </div>
+
+
+        <div class="painelStatus">
+
+            <h2>
+                O DIA ESTÁ ACONTECENDO
+            </h2>
+
+            <p id="statusDiaProfessor">
+                Os alunos estão respondendo às questões.
+            </p>
+
+        </div>
+
+
+        <div class="contadorVivos">
+
+            👥
+            <span id="quantidadeVivosProfessor">
+                0
+            </span>
+
+            jogadores vivos
+
+        </div>
+
+
+        <div
+            id="noticiasProfessorDia"
+            class="noticias"
+        ></div>
+
+        
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BÔNUS
+    ====================================================== -->
+
+    <section
+        id="telaBonus"
+        class="card escondido"
+    >
+
+        <h1>
+            FASE BÔNUS
+        </h1>
+
+
+        <div class="painelStatus">
+
+            <h2 id="tituloBonusProfessor">
+                FASE BÔNUS EM ANDAMENTO
+            </h2>
+
+            <p id="statusBonusProfessor">
+                Os alunos estão realizando suas ações.
+            </p>
+
+        </div>
+
+
+        <div class="contadorVivos">
+
+            👥
+            <span id="quantidadeVivosBonus">
+                0
+            </span>
+
+            jogadores vivos
+
+        </div>
+
+
+        <div
+            id="noticiasProfessorBonus"
+            class="noticias"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         VOTAÇÃO
+    ====================================================== -->
+
+    <section
+        id="telaVotacaoProfessor"
+        class="card escondido"
+    >
+
+        <h1>
+            🗳️ VOTAÇÃO
+        </h1>
+
+
+        <div class="painelStatus">
+
+            <h2>
+                VOTAÇÃO EM ANDAMENTO
+            </h2>
+
+            <p id="statusVotacaoProfessor">
+                Aguardando os votos...
+            </p>
+
+        </div>
+
+
+        <div class="contadorVivos">
+
+            👥
+            <span id="quantidadeVivosVotacao">
+                0
+            </span>
+
+            jogadores vivos
+
+        </div>
+
+
+        <div
+            id="resultadoVotacaoProfessor"
+            class="listaVotacaoProfessor"
+        ></div>
+
+
+        <div
+            id="noticiasProfessorVotacao"
+            class="noticias"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DORMINDO / NOITE
+    ====================================================== -->
+
+    <section
+        id="telaNoiteProfessor"
+        class="card escondido"
+    >
+
+        <div class="resultadoGrande">
+
+            <h1 id="tituloNoiteProfessor">
+                🌙 CIDADE DORME
+            </h1>
+
+            <p id="mensagemNoiteProfessor">
+                Todos devem dormir.
+            </p>
+
+            <div class="contadorVivos">
+
+                👥
+                <span id="quantidadeVivosNoite">
+                    0
+                </span>
+
+                jogadores vivos
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESULTADO / FIM
+    ====================================================== -->
+
+    <section
+        id="telaResultadoProfessor"
+        class="card escondido"
+    >
+
+        <h1 id="tituloResultadoProfessor">
+            Resultado
+        </h1>
+
+
+        <div
+            id="resultadoProfessor"
+            class="resultadoGrande"
+        ></div>
+
+
+        <div
+            id="quantidadeFinalProfessor"
+            class="contadorVivos"
+        >
+            👥
+            <span id="quantidadeVivosFinal">
+                0
+            </span>
+
+            jogadores vivos
+        </div>
+
+
+        <div
+            id="noticiasProfessorFinal"
+            class="noticias"
+        ></div>
+
+        <button
+    id="btnEncerrarPartida"
+    class="btn principal"
+>
+    🏁 ENCERRAR PARTIDA
+</button>
+
+<button
+    id="btnNovaSala"
+    class="btn principal"
+>
+    🏠 CRIAR NOVA SALA
+</button>
+
+
+    </section>
+
+
+    
+
+</main>
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="professor.js"></script>
+
+</body>
+
+</html>
