@@ -175,20 +175,20 @@ function criarQuestaoBonusAcao(alvos, papel) {
     */
 
     if (
-        papel === "ANJO"
-    ) {
+    papel === "ANJO"
+) {
 
-        instrucao =
-            `Escolha uma das pessoas abaixo para proteger nesta rodada. Antes de escolher, resolva mentalmente: ${questao.numerador1}/${questao.denominador} + ${questao.numerador2}/${questao.denominador}.`;
+    instrucao =
+        `🛡️ VOCÊ É O ANJO  — ESCOLHA UM JOGADOR PARA PROTEGER. SEJA RÁPIDO: ${questao.numerador1}/${questao.denominador} + ${questao.numerador2}/${questao.denominador}.`;
 
-    }
+}
 
-    else {
+else {
 
-        instrucao =
-            `Escolha uma das pessoas abaixo para realizar sua ação nesta rodada. Antes de escolher, resolva mentalmente: ${questao.numerador1}/${questao.denominador} + ${questao.numerador2}/${questao.denominador}.`;
+    instrucao =
+        `🎯 VOCÊ É O ASSASSINO — ESCOLHA UM JOGADOR PARA ELIMINAR. SEJA RÁPIDO: ${questao.numerador1}/${questao.denominador} + ${questao.numerador2}/${questao.denominador}.`;
 
-    }
+}
 
 
     const alternativas =
