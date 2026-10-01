@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
+
 const SALAS_DISPONIVEIS = require("./public/salas.js");
 
 
